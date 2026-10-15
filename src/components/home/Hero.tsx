@@ -86,6 +86,13 @@ const tiles = [
   },
 ];
 
+/** Showcase order follows the featured project order: OneBit leads. */
+const tileOrder = ["onebit", "facesnap", "phishing-detection", "aipfl-ids"];
+
+function orderedTiles() {
+  return tileOrder.flatMap((slug) => tiles.filter((t) => t.slug === slug));
+}
+
 export function Hero() {
   return (
     <section aria-labelledby="hero-heading" className="relative overflow-hidden">
@@ -96,11 +103,15 @@ export function Hero() {
         </p>
         <h1
           id="hero-heading"
-          className="display reveal reveal-1 mt-5 max-w-[20ch] text-balance text-[clamp(2.6rem,7vw,5.2rem)] font-extrabold leading-[1.0]"
+          className="display reveal reveal-1 mt-5 max-w-[18ch] text-balance text-[clamp(2.6rem,7vw,5.2rem)] font-extrabold leading-[1.0]"
         >
-          I build <span className="serif-accent font-normal">intelligent software</span>,
-          security tools and resilient systems.
+          I build <span className="serif-accent font-normal">software for the real world.</span>
         </h1>
+        <p className="display reveal reveal-1 mt-4 text-xl font-bold tracking-tight sm:text-2xl">
+          <span>Intelligent.</span>
+          <span style={{ color: "var(--coral)" }}> Secure.</span>
+          <span> Resilient.</span>
+        </p>
 
         <div className="mt-10 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
           <div className="reveal reveal-2">
@@ -130,7 +141,7 @@ export function Hero() {
 
           <div className="reveal reveal-3">
             <div className="grid gap-4 sm:grid-cols-2">
-              {tiles.map((t) => (
+              {orderedTiles().map((t) => (
                 <Link
                   key={t.slug}
                   href={`/work/${t.slug}`}

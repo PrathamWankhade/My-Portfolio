@@ -37,8 +37,59 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: "facesnap",
+    slug: "onebit",
     index: "01",
+    title: "OneBit",
+    category: "Systems engineering / Offline communication",
+    signal: "Store-and-forward messaging over BLE — best-effort delivery, no audit claims.",
+    summary:
+      "Offline peer-to-peer messaging over Bluetooth LE with multi-hop store-and-forward routing, local persistence, QR identity exchange and encrypted sessions.",
+    stack: ["Flutter", "Dart", "Riverpod", "Drift / SQLite", "Bluetooth LE", "Encrypted sessions"],
+    cardStack: ["Flutter", "Dart", "Bluetooth LE", "Drift / SQLite"],
+    repo: "https://github.com/PrathamWankhade/OneBit",
+    status: "In development · scope per repository",
+    visual: "onebit",
+    motivation:
+      "Connectivity cannot be assumed everywhere. OneBit is designed for places and moments where the network is absent — messages move device to device until they can be delivered.",
+    goals: [
+      "Enable messaging with no internet dependency",
+      "Route messages across relay devices (A → relays → B)",
+      "Persist queues locally across restarts",
+      "Exchange identities over QR and protect sessions with encryption",
+    ],
+    architecture: [
+      "Flutter + Riverpod client with local-first state",
+      "Drift / SQLite for durable queues and message history",
+      "Bluetooth LE discovery, connection and transfer",
+      "Store-and-forward relay with routing metadata",
+      "Encrypted sessions after QR-based identity exchange",
+    ],
+    decisions: [
+      "Routing, queueing and session design below reflects the repository's current implementation and design docs",
+      "Delivery is best-effort mesh behavior, not guaranteed in every environment",
+      "Cryptography uses standard libraries; no independent audit is claimed",
+    ],
+    workflows: [
+      "Exchange identity via QR → discover over BLE",
+      "Queue message locally → forward through relays",
+      "Relay stores, carries, forwards → recipient decrypts and persists",
+    ],
+    validation:
+      "Behavior is demonstrated at the scope the repository currently implements: local queueing, BLE discovery, relay forwarding and encrypted sessions. Field delivery rates are not yet measured.",
+    limitations: [
+      "BLE range, throughput and OS backgrounding constrain real-world behavior",
+      "Routing overhead grows with hops and queue depth",
+      "Security properties need formal review before sensitive use",
+    ],
+    future: [
+      "Congestion-aware forwarding",
+      "Battery-aware relay policies",
+      "Documented field test with measured delivery rates",
+    ],
+  },
+  {
+    slug: "facesnap",
+    index: "02",
     title: "FaceSnap",
     category: "Computer vision / Applied AI",
     signal: "Detection, verification and attendance are separate states — unknowns stay reviewable.",
@@ -89,7 +140,7 @@ export const projects: Project[] = [
   },
   {
     slug: "phishing-detection",
-    index: "02",
+    index: "03",
     title: "Email Phishing Detection System",
     category: "Cybersecurity / Applied ML",
     signal: "Model probability and heuristic risk are reported as two distinct numbers.",
@@ -140,7 +191,7 @@ export const projects: Project[] = [
   },
   {
     slug: "aipfl-ids",
-    index: "03",
+    index: "04",
     title: "AIPFL-IDS",
     category: "ML research / Cybersecurity",
     signal: "Federated averaging simulated in one process — no deployed clients implied.",
@@ -187,57 +238,6 @@ export const projects: Project[] = [
       "Real multi-node federation experiment",
       "Non-IID robustness study",
       "Privacy accounting if privacy mechanisms are added",
-    ],
-  },
-  {
-    slug: "onebit",
-    index: "04",
-    title: "OneBit",
-    category: "Systems engineering / Offline communication",
-    signal: "Store-and-forward messaging over BLE — best-effort delivery, no audit claims.",
-    summary:
-      "Offline peer-to-peer messaging over Bluetooth LE with multi-hop store-and-forward routing, local persistence, QR identity exchange and encrypted sessions.",
-    stack: ["Flutter", "Dart", "Riverpod", "Drift / SQLite", "Bluetooth LE", "Encrypted sessions"],
-    cardStack: ["Flutter", "Dart", "Bluetooth LE", "Drift / SQLite"],
-    repo: "https://github.com/PrathamWankhade/OneBit",
-    status: "In development · scope per repository",
-    visual: "onebit",
-    motivation:
-      "Connectivity cannot be assumed everywhere. OneBit is designed for places and moments where the network is absent — messages move device to device until they can be delivered.",
-    goals: [
-      "Enable messaging with no internet dependency",
-      "Route messages across relay devices (A → relays → B)",
-      "Persist queues locally across restarts",
-      "Exchange identities over QR and protect sessions with encryption",
-    ],
-    architecture: [
-      "Flutter + Riverpod client with local-first state",
-      "Drift / SQLite for durable queues and message history",
-      "Bluetooth LE discovery, connection and transfer",
-      "Store-and-forward relay with routing metadata",
-      "Encrypted sessions after QR-based identity exchange",
-    ],
-    decisions: [
-      "Routing, queueing and session design below reflects the repository's current implementation and design docs",
-      "Delivery is best-effort mesh behavior, not guaranteed in every environment",
-      "Cryptography uses standard libraries; no independent audit is claimed",
-    ],
-    workflows: [
-      "Exchange identity via QR → discover over BLE",
-      "Queue message locally → forward through relays",
-      "Relay stores, carries, forwards → recipient decrypts and persists",
-    ],
-    validation:
-      "Behavior is demonstrated at the scope the repository currently implements: local queueing, BLE discovery, relay forwarding and encrypted sessions. Field delivery rates are not yet measured.",
-    limitations: [
-      "BLE range, throughput and OS backgrounding constrain real-world behavior",
-      "Routing overhead grows with hops and queue depth",
-      "Security properties need formal review before sensitive use",
-    ],
-    future: [
-      "Congestion-aware forwarding",
-      "Battery-aware relay policies",
-      "Documented field test with measured delivery rates",
     ],
   },
 ];
