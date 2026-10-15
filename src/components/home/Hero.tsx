@@ -15,9 +15,10 @@ export function Hero() {
             </p>
             <h1
               id="hero-heading"
-              className="display reveal reveal-1 mt-5 max-w-[14ch] text-balance text-[clamp(2.4rem,6vw,4.4rem)] font-extrabold leading-[1.02]"
+              className="display reveal reveal-1 mt-5 max-w-[16ch] text-balance text-[clamp(2.2rem,5.4vw,3.9rem)] font-extrabold leading-[1.04]"
             >
-              Engineering ideas into <span className="serif-accent font-normal">intelligent</span> systems.
+              I build <span className="serif-accent font-normal">intelligent software</span>,
+              security tools and resilient systems.
             </h1>
             <p
               className="reveal reveal-2 mt-6 max-w-xl text-[1.08rem] leading-relaxed"

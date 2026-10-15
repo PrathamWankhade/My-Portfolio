@@ -1,8 +1,8 @@
 export const profile = {
   name: "Pratham Wankhade",
-  eyebrow: "Software Engineering / Applied AI / Security",
-  headline: "Engineering ideas into intelligent systems.",
-  lede: "I build practical software across AI, computer vision, cybersecurity and connected systems — from research prototypes to full-stack applications.",
+  eyebrow: "Software Engineering · Applied AI · Cybersecurity",
+  headline: "I build intelligent software, security tools and resilient systems.",
+  lede: "From machine-learning pipelines and security analysis to offline-first applications, I turn complex engineering ideas into working software.",
   location: "Amravati, Maharashtra, India",
   positioning:
     "I build intelligent software systems that connect machine learning, security, and practical engineering.",

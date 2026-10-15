@@ -24,7 +24,7 @@ const routes = [
 
 const mustContain = {
   "/": [
-    "Engineering ideas into",
+    "security tools and resilient systems",
     "FaceSnap",
     "AIPFL-IDS",
     "OneBit",
