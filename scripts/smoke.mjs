@@ -5,7 +5,7 @@
  *
  * Usage: npm run build && npm run smoke
  */
-import { spawn } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
 
 const PORT = Number(process.env.SMOKE_PORT ?? 3104);
 const BASE = `http://localhost:${PORT}`;
@@ -46,6 +46,27 @@ const mustNotContainEverywhere = [
 
 function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
+}
+
+/**
+ * Kill the whole process tree. Plain proc.kill() on Windows only kills the
+ * `npx` wrapper, orphaning next-server and leaving the port occupied — which
+ * makes later runs test a stale server instead of the fresh build.
+ */
+function killTree(proc) {
+  try {
+    if (process.platform === "win32" && proc.pid) {
+      spawnSync("taskkill", ["/pid", String(proc.pid), "/T", "/F"], { stdio: "ignore" });
+      return;
+    }
+  } catch {
+    /* fall through to proc.kill */
+  }
+  try {
+    proc.kill();
+  } catch {
+    /* already exited */
+  }
 }
 
 async function waitForServer(proc, timeoutMs = 60000) {
@@ -102,7 +123,8 @@ async function main() {
       }
     }
   } finally {
-    proc.kill();
+    killTree(proc);
+    await sleep(2000);
   }
   if (failures > 0) {
     console.error(`${failures} smoke check(s) failed`);
