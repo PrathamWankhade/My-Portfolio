@@ -27,8 +27,8 @@ export function ProjectCard({ project, flip = false }: { project: Project; flip?
         >
           {project.signal}
         </p>
-        <ul className="mt-4 flex flex-wrap gap-2" aria-label="Technologies">
-          {project.stack.map((t) => (
+        <ul className="mt-4 flex flex-wrap gap-2" aria-label="Key technologies">
+          {project.cardStack.map((t) => (
             <li
               key={t}
               className="rounded-full border px-3 py-1 font-mono text-[11px] tracking-wide"

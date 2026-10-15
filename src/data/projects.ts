@@ -12,7 +12,10 @@ export interface Project {
   summary: string;
   /** One-line engineering signal: the decision or constraint that defines the build. */
   signal: string;
+  /** Full stack for the case-study page. */
   stack: string[];
+  /** Defining subset shown on the homepage card. */
+  cardStack: string[];
   repo: string;
   status: string;
   visual: "facesnap" | "phishing" | "aipfl" | "onebit";
@@ -36,6 +39,7 @@ export const projects: Project[] = [
     summary:
       "Guided enrollment, live verification and batch attendance workflows for college classrooms — with detection, identity verification and attendance recording kept as separate, reviewable states.",
     stack: ["Next.js", "FastAPI", "InsightFace / ArcFace", "ONNX Runtime", "Qdrant", "Firebase"],
+    cardStack: ["Next.js", "FastAPI", "InsightFace / ArcFace", "Qdrant"],
     repo: "https://github.com/PrathamWankhade/FaceSnap",
     status: "Working prototype",
     visual: "facesnap",
@@ -86,6 +90,7 @@ export const projects: Project[] = [
     summary:
       "Classifier output combined with URL, sender, authentication and business-email-compromise signals — presented as an evidence breakdown, not a single unexplained verdict.",
     stack: ["React", "Vite", "FastAPI", "scikit-learn", "NLP", "URL & sender analysis"],
+    cardStack: ["React", "FastAPI", "scikit-learn", "NLP"],
     repo: "https://github.com/PrathamWankhade/email-phishing-detection-system",
     status: "Working prototype",
     visual: "phishing",
@@ -136,6 +141,7 @@ export const projects: Project[] = [
     summary:
       "Intrusion-detection research prototype for IoT network traffic with a simulated federated-averaging workflow — client partitions run inside one process, stated plainly.",
     stack: ["Python", "TensorFlow", "Flask", "Next.js", "IoT intrusion datasets"],
+    cardStack: ["Python", "TensorFlow", "Flask", "Next.js"],
     repo: "https://github.com/PrathamWankhade/AIPFL-IDS",
     status: "Research prototype · simulated federation",
     visual: "aipfl",
@@ -186,6 +192,7 @@ export const projects: Project[] = [
     summary:
       "Offline peer-to-peer messaging over Bluetooth LE with multi-hop store-and-forward routing, local persistence, QR identity exchange and encrypted sessions.",
     stack: ["Flutter", "Dart", "Riverpod", "Drift / SQLite", "Bluetooth LE", "Encrypted sessions"],
+    cardStack: ["Flutter", "Dart", "Bluetooth LE", "Drift / SQLite"],
     repo: "https://github.com/PrathamWankhade/OneBit",
     status: "In development · scope per repository",
     visual: "onebit",
