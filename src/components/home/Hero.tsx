@@ -77,7 +77,10 @@ const tiles = [
       <div aria-hidden="true" className="space-y-2">
         <p className="w-fit max-w-full rounded-2xl rounded-bl-md px-3 py-1.5 text-xs" style={{ background: "var(--surface-2)", color: "var(--ink-dim)" }}>Are we still on for Saturday?</p>
         <p className="badge-accent ml-auto w-fit max-w-full rounded-2xl rounded-br-md px-3 py-1.5 text-xs font-medium">Yes — via R1 · R2, no network</p>
-        <p className="font-mono text-[10px]" style={{ color: "var(--muted)" }}>queued · stored · forwarded</p>
+        <p className="flex items-center gap-1.5 font-mono text-[10px]" style={{ color: "var(--muted)" }}>
+          <span aria-hidden="true" className="inline-block h-2 w-2 rounded-full border" style={{ background: "var(--lime, #c9f36b)", borderColor: "var(--line-strong)" }} />
+          queued · stored · forwarded
+        </p>
       </div>
     ),
   },

@@ -2,17 +2,18 @@
    75% neutrals · 20% supporting surfaces · 5% cobalt/coral accents. */
 
 :root {
-  --bg: #f5f2eb;
+  --bg: #f2f1ea;
   --surface: #ffffff;
   --surface-2: #e9e4d8;
-  --surface-accent: #e8e8ff;
-  --ink: #191c26;
+  --surface-accent: #dde2ff;
+  --ink: #181b24;
   --ink-dim: #3a4152;
   --muted: #626775;
   --accent: #3457f1;
   --accent-hover: #2845ce;
   --on-accent: #ffffff;
   --coral: #ff735c;
+  --lime: #c9f36b;
   --titanium: #8a8fa0;
   --line: #dcddd8;
   --line-strong: #c2c3bb;
