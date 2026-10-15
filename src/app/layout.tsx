@@ -38,11 +38,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" data-theme="light" suppressHydrationWarning>
       <head>
         {/* beforeInteractive: runs before hydration, prevents theme flash.
-            Plain <script> in a Server Component is never executed on the
-            client, hence next/script (allowed in the root layout). */}
-        <Script id="pw-theme-init" strategy="beforeInteractive">
-          {`(function(){try{var t=localStorage.getItem('pw-theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='dark';}})();`}
-        </Script>
+            Inline body via dangerouslySetInnerHTML is the canonical
+            next/script form (children would render a raw nested script). */}
+        <Script
+          id="pw-theme-init"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('pw-theme');if(t!=='light'&&t!=='dark'){t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.dataset.theme=t;}catch(e){document.documentElement.dataset.theme='light';}})();`,
+          }}
+        />
         {/* Structured data: non-executable JSON-LD, the documented Next.js pattern. */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd()) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd()) }} />
