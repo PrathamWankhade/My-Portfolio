@@ -6,22 +6,22 @@ const blocks = [
   {
     icon: BrainCircuit,
     title: "Applied intelligence",
-    copy: "Model-driven features — NLP, vision and evaluation — wired into software people can actually use.",
+    copy: "Classifier, NLP and vision pipelines carried from notebook to working feature.",
   },
   {
     icon: Lock,
     title: "Security engineering",
-    copy: "Phishing and intrusion analysis with evidence-first presentation and honest limits.",
+    copy: "Phishing and intrusion analysis where every verdict shows its evidence.",
   },
   {
     icon: Boxes,
     title: "Systems & communication",
-    copy: "Offline-first design: local persistence, BLE discovery, queueing and multi-hop routing.",
+    copy: "Offline-first design — BLE discovery, local queues and multi-hop relay.",
   },
   {
     icon: Rocket,
     title: "Product engineering",
-    copy: "Full-stack delivery — APIs, interfaces and deployable prototypes with typed, editable content.",
+    copy: "APIs, interfaces and deployable prototypes with typed, editable content.",
   },
 ];
 

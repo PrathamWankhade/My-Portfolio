@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { siteConfig } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
@@ -17,10 +17,18 @@ const links = [
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const menuPanelRef = useRef<HTMLDivElement>(null);
+
+  function closeAndRefocus() {
+    setOpen(false);
+    // Return focus to the trigger so keyboard users don't lose their place.
+    menuButtonRef.current?.focus();
+  }
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") closeAndRefocus();
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -28,6 +36,10 @@ export function Header() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+    if (open) {
+      // Move focus into the menu on open for keyboard and screen-reader users.
+      menuPanelRef.current?.querySelector("a")?.focus();
+    }
     return () => {
       document.body.style.overflow = "";
     };
@@ -79,6 +91,7 @@ export function Header() {
             <ThemeToggle />
             <button
               type="button"
+              ref={menuButtonRef}
               onClick={() => setOpen((v) => !v)}
               aria-expanded={open}
               aria-controls="mobile-menu"
@@ -94,6 +107,7 @@ export function Header() {
 
       <div
         id="mobile-menu"
+        ref={menuPanelRef}
         className={cn("border-t md:hidden", open ? "block" : "hidden")}
         style={{ borderColor: "var(--line)", background: "var(--bg)" }}
       >

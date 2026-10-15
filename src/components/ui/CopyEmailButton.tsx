@@ -9,9 +9,11 @@ export function CopyEmailButton() {
 
   async function copy() {
     const email = siteConfig.email;
+    let ok = false;
     try {
       if (navigator.clipboard?.writeText) {
         await navigator.clipboard.writeText(email);
+        ok = true;
       } else {
         const ta = document.createElement("textarea");
         ta.value = email;
@@ -19,12 +21,18 @@ export function CopyEmailButton() {
         ta.style.opacity = "0";
         document.body.appendChild(ta);
         ta.select();
-        document.execCommand("copy");
+        // execCommand returns false when the copy fails — don't claim success then.
+        ok = document.execCommand("copy");
         document.body.removeChild(ta);
       }
+    } catch {
+      ok = false;
+    }
+    if (ok) {
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2000);
-    } catch {
+    } else {
+      // Copy unavailable: fall back to opening the user's mail client.
       window.location.href = `mailto:${email}`;
     }
   }

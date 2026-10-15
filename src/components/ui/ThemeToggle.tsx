@@ -3,10 +3,24 @@
 import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 
-function initialTheme(): "dark" | "light" {
-  if (typeof window === "undefined") return "dark";
+type Theme = "dark" | "light";
+
+function isTheme(value: string | undefined): value is Theme {
+  return value === "light" || value === "dark";
+}
+
+/**
+ * Single source of truth: the inline pre-hydration script in layout.tsx sets
+ * `document.documentElement.dataset.theme` before React mounts, so the initial
+ * state reads that attribute instead of re-deriving from storage. The fallbacks
+ * below only run if the script did not (e.g. script disabled).
+ */
+function initialTheme(): Theme {
+  if (typeof window === "undefined" || typeof document === "undefined") return "dark";
+  const fromDom = document.documentElement.dataset.theme;
+  if (isTheme(fromDom)) return fromDom;
   try {
-    const stored = window.localStorage.getItem("pw-theme");
+    const stored: string | null = window.localStorage.getItem("pw-theme");
     if (stored === "light" || stored === "dark") return stored;
     return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
   } catch {
@@ -15,7 +29,7 @@ function initialTheme(): "dark" | "light" {
 }
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<"dark" | "light">(initialTheme);
+  const [theme, setTheme] = useState<Theme>(initialTheme);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
