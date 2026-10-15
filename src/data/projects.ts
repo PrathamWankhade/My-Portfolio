@@ -16,6 +16,12 @@ export interface Project {
   stack: string[];
   /** Defining subset shown on the homepage card. */
   cardStack: string[];
+  /**
+   * Genuine screenshot. Supply real captures with synthetic/anonymized data;
+   * never present mockups as implemented features. Unset until available —
+   * the labelled diagram renders instead.
+   */
+  image?: { src: string; alt: string };
   repo: string;
   status: string;
   visual: "facesnap" | "phishing" | "aipfl" | "onebit";

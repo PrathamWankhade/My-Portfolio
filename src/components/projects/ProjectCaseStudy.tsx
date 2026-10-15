@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { GithubIcon } from "@/components/ui/BrandIcons";
 import { getProject, projects } from "@/data/projects";
 import { Container } from "@/components/ui/Container";
-import { ProjectVisual } from "@/components/projects/ProjectVisual";
+import { ProjectMedia } from "@/components/projects/ProjectMedia";
 import { notFound } from "next/navigation";
 
 function Block({ title, items }: { title: string; items: string[] }) {
@@ -107,7 +107,7 @@ export function ProjectCaseStudy({ slug }: { slug: string }) {
 
       <div className="mt-10 grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
         <div>
-          <ProjectVisual project={project} />
+          <ProjectMedia project={project} />
           <section aria-label="Overview" className="mt-8">
             <h2 className="mono-label" style={{ color: "var(--accent)" }}>
               Overview & motivation

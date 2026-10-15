@@ -20,7 +20,12 @@ export function SelectedWork() {
         </span>
         <div className="mt-10 space-y-6">
           {projects.map((p, i) => (
-            <ProjectCard key={p.slug} project={p} flip={i % 2 === 1} />
+            <ProjectCard
+              key={p.slug}
+              project={p}
+              variant={i === 0 ? "feature" : "split"}
+              flip={i % 2 === 1}
+            />
           ))}
         </div>
       </Container>
