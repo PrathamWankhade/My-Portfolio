@@ -65,7 +65,7 @@ export const projects: Project[] = [
       "Batch → group photo → per-face candidates → reviewer confirms",
     ],
     validation:
-      "Validation is repository-reported and workflow-based: enrollment, verification and review paths are exercised as described in the project documentation. No claim of perfect reliability is made.",
+      "Tested through the documented workflows: guided enrollment, live verification, batch capture and group-photo review. Evaluation follows the repository's own procedure — results describe that setup, not real-world accuracy.",
     limitations: [
       "Accuracy depends on lighting, pose, camera quality and enrollment coverage",
       "Thresholds need per-deployment tuning; defaults are not guarantees",
@@ -115,7 +115,7 @@ export const projects: Project[] = [
       "Score heuristics → combine into a reviewable evidence panel",
     ],
     validation:
-      "Any metrics shown are reported evaluation from the repository's own methodology, linked from the repository — not a claim about real-world detection rates.",
+      "Metrics follow the repository's own evaluation methodology, linked from the repository. They describe that evaluation — not real-world detection rates.",
     limitations: [
       "Evaluation data may not reflect current or targeted phishing",
       "Adversarial and novel campaigns can evade both model and heuristics",
@@ -155,8 +155,8 @@ export const projects: Project[] = [
       "Evaluation and reporting, with Flask + Next.js surface",
     ],
     decisions: [
-      "Clients are simulated partitions, as the repository states — not independent devices",
-      "No claim of secure aggregation, differential privacy or formal privacy guarantees",
+      "The current experiment simulates multiple clients within one process — not independent devices",
+      "No secure aggregation, differential privacy, or formal privacy guarantees are implemented",
       "Diagrams are illustrative and non-quantitative unless sourced from repository charts",
     ],
     workflows: [
@@ -165,7 +165,7 @@ export const projects: Project[] = [
       "Evaluate centrally → report per the repository methodology",
     ],
     validation:
-      "Results follow the repository's reported evaluation only. They describe the simulated setup — they do not transfer to deployed federated environments.",
+      "Evaluated with the repository's own procedure on the two IoT datasets. Results describe the simulated setup — they do not transfer to deployed federated environments.",
     limitations: [
       "Single-process simulation cannot capture network, device or non-IID deployment effects",
       "No formal privacy analysis is included",
@@ -205,7 +205,7 @@ export const projects: Project[] = [
       "Encrypted sessions after QR-based identity exchange",
     ],
     decisions: [
-      "Features are described as implemented or designed according to current repository evidence",
+      "Routing, queueing and session design below reflects the repository's current implementation and design docs",
       "Delivery is best-effort mesh behavior, not guaranteed in every environment",
       "Cryptography uses standard libraries; no independent audit is claimed",
     ],
@@ -215,7 +215,7 @@ export const projects: Project[] = [
       "Relay stores, carries, forwards → recipient decrypts and persists",
     ],
     validation:
-      "Validation is repository- and design-based at this stage. Behavior claims are scoped to what the repository currently demonstrates.",
+      "Behavior is demonstrated at the scope the repository currently implements: local queueing, BLE discovery, relay forwarding and encrypted sessions. Field delivery rates are not yet measured.",
     limitations: [
       "BLE range, throughput and OS backgrounding constrain real-world behavior",
       "Routing overhead grows with hops and queue depth",

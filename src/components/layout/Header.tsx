@@ -20,19 +20,18 @@ export function Header() {
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const menuPanelRef = useRef<HTMLDivElement>(null);
 
-  function closeAndRefocus() {
-    setOpen(false);
-    // Return focus to the trigger so keyboard users don't lose their place.
-    menuButtonRef.current?.focus();
-  }
-
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape") closeAndRefocus();
+      // Only act when the menu is actually open: on desktop the trigger is
+      // hidden, so focusing it there would strand keyboard users.
+      if (e.key === "Escape" && open) {
+        setOpen(false);
+        menuButtonRef.current?.focus();
+      }
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, []);
+  }, [open ]);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";

@@ -25,11 +25,12 @@ Premium editorial-minimalist personal portfolio. Next.js App Router + React + st
 
 ```bash
 npm install
-npm run dev      # local dev at http://localhost:3000
-npm run lint     # eslint
-npx tsc --noEmit # type check
-npm run build    # production build
-npm start        # serve production build
+npm run dev        # local dev at http://localhost:3000
+npm run lint       # eslint
+npm run typecheck  # tsc --noEmit
+npm run build      # production build
+npm run smoke      # production smoke test (requires a build first)
+npm start          # serve production build
 ```
 
 Set the production domain before deploying:
