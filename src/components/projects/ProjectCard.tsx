@@ -52,7 +52,12 @@ export function ProjectCard({
   if (variant === "feature") {
     return (
       <article aria-labelledby={`project-${project.slug}`}>
-        <ProjectMedia project={project} large />
+        <div
+          className="rounded-2xl p-4 sm:p-8"
+          style={{ background: "var(--surface-accent)" }}
+        >
+          <ProjectMedia project={project} large />
+        </div>
         <p className="mono-label mt-6" style={{ color: "var(--muted)" }}>
           Featured · {project.index} — {project.category} · {project.status}
         </p>

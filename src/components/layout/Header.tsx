@@ -56,7 +56,7 @@ export function Header() {
             className="display text-[1.05rem] font-extrabold tracking-tight"
             aria-label="Pratham Wankhade — home"
           >
-            PW<span style={{ color: "var(--accent)" }}>.</span>
+            PW<span style={{ color: "var(--coral)" }}>.</span>
             <span className="sr-only"> Pratham Wankhade</span>
           </Link>
 
@@ -78,8 +78,7 @@ export function Header() {
             <Link
               href={siteConfig.resumePath}
               download
-              className="inline-flex min-h-[42px] items-center gap-1.5 rounded-full px-5 text-sm font-semibold text-[#111315]"
-              style={{ background: "var(--accent)" }}
+              className="btn-primary inline-flex min-h-[42px] items-center gap-1.5 rounded-full px-5 text-sm font-semibold"
             >
               Résumé
               <ArrowUpRight size={15} aria-hidden="true" />
@@ -127,8 +126,7 @@ export function Header() {
               href={siteConfig.resumePath}
               download
               onClick={() => setOpen(false)}
-              className="mt-3 inline-flex min-h-[48px] items-center justify-center gap-1.5 rounded-full px-5 text-sm font-semibold text-[#111315]"
-              style={{ background: "var(--accent)" }}
+              className="btn-primary mt-3 inline-flex min-h-[48px] items-center justify-center gap-1.5 rounded-full px-5 text-sm font-semibold"
             >
               Download résumé
               <ArrowUpRight size={15} aria-hidden="true" />

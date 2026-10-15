@@ -21,7 +21,7 @@ const tiles = [
           </div>
         </div>
         <div className="mt-3 flex gap-2">
-          <span className="rounded-full px-3 py-1 font-mono text-[10px] font-bold text-[#111315]" style={{ background: "var(--accent)" }}>CONFIRM</span>
+          <span className="badge-accent rounded-full px-3 py-1 font-mono text-[10px] font-bold">CONFIRM</span>
           <span className="rounded-full border px-3 py-1 font-mono text-[10px]" style={{ borderColor: "var(--line-strong)", color: "var(--muted)" }}>REVIEW</span>
         </div>
       </div>
@@ -33,7 +33,7 @@ const tiles = [
     sub: "Evidence breakdown",
     body: (
       <div aria-hidden="true">
-        <p className="inline-block rounded-full px-3 py-1 font-mono text-[10px] font-bold text-[#111315]" style={{ background: "var(--accent)" }}>REVIEW — SUSPICIOUS</p>
+        <p className="badge-accent inline-block rounded-full px-3 py-1 font-mono text-[10px] font-bold">REVIEW — SUSPICIOUS</p>
         <div className="mt-3 space-y-2">
           {[
             ["model", "87%"],
@@ -63,7 +63,7 @@ const tiles = [
             <span key={c} className="rounded-md border px-2 py-1 font-mono text-[10px]" style={{ borderColor: "var(--line-strong)", color: "var(--muted)" }}>{c}</span>
           ))}
           <span style={{ color: "var(--accent)" }}>→</span>
-          <span className="rounded-md px-2 py-1 font-mono text-[10px] font-bold text-[#111315]" style={{ background: "var(--accent)" }}>GLOBAL</span>
+          <span className="badge-accent rounded-md px-2 py-1 font-mono text-[10px] font-bold">GLOBAL</span>
         </div>
         <p className="mt-2 font-mono text-[10px]" style={{ color: "var(--muted)" }}>one process · illustrative</p>
       </div>
@@ -76,7 +76,7 @@ const tiles = [
     body: (
       <div aria-hidden="true" className="space-y-2">
         <p className="w-fit max-w-full rounded-2xl rounded-bl-md px-3 py-1.5 text-xs" style={{ background: "var(--surface-2)", color: "var(--ink-dim)" }}>Are we still on for Saturday?</p>
-        <p className="ml-auto w-fit max-w-full rounded-2xl rounded-br-md px-3 py-1.5 text-xs font-medium text-[#111315]" style={{ background: "var(--accent)" }}>Yes — via R1 · R2, no network</p>
+        <p className="badge-accent ml-auto w-fit max-w-full rounded-2xl rounded-br-md px-3 py-1.5 text-xs font-medium">Yes — via R1 · R2, no network</p>
         <p className="font-mono text-[10px]" style={{ color: "var(--muted)" }}>queued · stored · forwarded</p>
       </div>
     ),
@@ -89,6 +89,7 @@ export function Hero() {
       <Container className="pb-14 pt-14 sm:pb-20 sm:pt-20">
         <p className="mono-label reveal" style={{ color: "var(--accent)" }}>
           {profile.eyebrow}
+          <span aria-hidden="true" style={{ color: "var(--coral)" }}> ●</span>
         </p>
         <h1
           id="hero-heading"
@@ -106,8 +107,7 @@ export function Hero() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/#work"
-                className="inline-flex min-h-[48px] items-center gap-2 rounded-full px-6 text-[0.95rem] font-semibold text-[#111315] transition-transform hover:-translate-y-0.5"
-                style={{ background: "var(--accent)" }}
+                className="btn-primary inline-flex min-h-[48px] items-center gap-2 rounded-full px-6 text-[0.95rem] font-semibold hover:-translate-y-0.5"
               >
                 Explore selected work <ArrowDown size={16} aria-hidden="true" />
               </Link>

@@ -2,10 +2,11 @@
 @import "../styles/tokens.css";
 
 @theme inline {
-  --color-obsidian: #111315;
-  --color-ivory: #f4f0e8;
-  --color-sage: #b8cc8b;
-  --color-titanium: #878c91;
+  --color-porcelain: #f5f2eb;
+  --color-ink: #191c26;
+  --color-cobalt: #3457f1;
+  --color-coral: #ff735c;
+  --color-lavender: #e8e8ff;
   --font-display: "Manrope", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
   --font-accent: "Fraunces", Georgia, serif;
@@ -41,7 +42,7 @@ body {
 
 ::selection {
   background: var(--accent);
-  color: #111315;
+  color: var(--on-accent);
 }
 
 :focus-visible {
@@ -71,6 +72,22 @@ body {
 
 .email-wrap {
   overflow-wrap: anywhere;
+}
+
+/* Accent-paired controls: cobalt bg with the readable on-accent ink.
+   Replaces hardcoded dark-on-sage text so both themes stay accessible. */
+.btn-primary {
+  background-color: var(--accent);
+  color: var(--on-accent);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+}
+
+.badge-accent {
+  background-color: var(--accent);
+  color: var(--on-accent);
 }
 
 .hairline {
@@ -120,7 +137,7 @@ body {
   top: 0;
   z-index: 100;
   background: var(--accent);
-  color: #111315;
+  color: var(--on-accent);
   padding: 10px 16px;
   border-radius: 0 0 8px 0;
   font-weight: 600;

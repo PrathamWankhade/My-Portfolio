@@ -14,7 +14,7 @@ export function Contact() {
           className="flex items-center gap-3 text-[0.8rem] font-semibold uppercase tracking-[0.18em]"
           style={{ color: "var(--accent)" }}
         >
-          <span className="inline-block h-px w-8" style={{ background: "var(--accent)" }} aria-hidden="true" />
+          <span className="inline-block h-px w-8" style={{ background: "var(--coral)" }} aria-hidden="true" />
           Contact
         </p>
         <h2

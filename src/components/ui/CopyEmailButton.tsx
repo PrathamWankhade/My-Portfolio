@@ -41,8 +41,7 @@ export function CopyEmailButton() {
     <div className="flex flex-wrap items-center gap-3">
       <a
         href={`mailto:${siteConfig.email}`}
-        className="inline-flex min-h-[48px] min-w-0 items-center gap-2 rounded-full px-6 text-[0.95rem] font-semibold text-[#111315] transition-transform hover:-translate-y-0.5"
-        style={{ background: "var(--accent)" }}
+        className="btn-primary inline-flex min-h-[48px] min-w-0 items-center gap-2 rounded-full px-6 text-[0.95rem] font-semibold hover:-translate-y-0.5"
       >
         <Mail size={17} strokeWidth={2.2} aria-hidden="true" className="shrink-0" />
         <span className="email-wrap">{siteConfig.email}</span>

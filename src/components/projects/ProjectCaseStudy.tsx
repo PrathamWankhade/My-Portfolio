@@ -84,8 +84,7 @@ export function ProjectCaseStudy({ slug }: { slug: string }) {
           href={project.repo}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full px-5 text-sm font-semibold text-[#111315]"
-          style={{ background: "var(--accent)" }}
+          className="btn-primary inline-flex min-h-[44px] items-center gap-1.5 rounded-full px-5 text-sm font-semibold"
         >
           <GithubIcon size={15} /> View repository <ArrowUpRight size={14} aria-hidden="true" />
         </Link>
@@ -148,8 +147,7 @@ export function ProjectCaseStudy({ slug }: { slug: string }) {
         </div>
         <Link
           href={`/work/${next.slug}`}
-          className="inline-flex min-h-[48px] items-center gap-1.5 rounded-full px-6 text-[0.95rem] font-semibold text-[#111315]"
-          style={{ background: "var(--accent)" }}
+          className="btn-primary inline-flex min-h-[48px] items-center gap-1.5 rounded-full px-6 text-[0.95rem] font-semibold"
         >
           Open case study <ArrowRight size={15} aria-hidden="true" />
         </Link>

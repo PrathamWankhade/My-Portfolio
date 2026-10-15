@@ -22,7 +22,7 @@ export function Footer() {
         <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
           <div>
             <p className="display text-lg font-extrabold">
-              Pratham Wankhade<span style={{ color: "var(--accent)" }}>.</span>
+              Pratham Wankhade<span style={{ color: "var(--coral)" }}>.</span>
             </p>
             <p className="mt-1 text-sm" style={{ color: "var(--muted)" }}>
               Software Engineer · Applied AI · Cybersecurity

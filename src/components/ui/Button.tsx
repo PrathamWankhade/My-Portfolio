@@ -21,7 +21,7 @@ export function Button({
     "inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-6 text-[0.95rem] font-semibold transition-all duration-200";
   const styles =
     variant === "primary"
-      ? "text-[#111315] hover:-translate-y-0.5"
+      ? "btn-primary hover:-translate-y-0.5"
       : "border hover:-translate-y-0.5";
   return (
     <Link
@@ -31,7 +31,7 @@ export function Button({
       className={cn(base, className)}
       style={
         variant === "primary"
-          ? { background: "var(--accent)" }
+          ? undefined
           : { borderColor: "var(--line-strong)", color: "var(--ink)" }
       }
     >

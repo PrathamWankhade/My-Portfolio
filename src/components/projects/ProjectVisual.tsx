@@ -67,7 +67,7 @@ export function ProjectVisual({ project }: { project: Project }) {
           <p className="font-mono text-xs" style={{ color: "var(--muted)" }}>
             From: accounts-update@example-billing.net · Subject: “Action required: verify billing”
           </p>
-          <p className="mt-2 inline-block rounded-full px-3 py-1 font-mono text-xs font-bold text-[#111315]" style={{ background: "var(--accent)" }}>
+          <p className="badge-accent mt-2 inline-block rounded-full px-3 py-1 font-mono text-xs font-bold">
             VERDICT: REVIEW — SUSPICIOUS
           </p>
         </div>
