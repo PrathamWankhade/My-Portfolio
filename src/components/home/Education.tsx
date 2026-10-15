@@ -9,7 +9,7 @@ export function Education() {
     <section aria-labelledby="edu-heading" className="border-t" style={{ borderColor: "var(--line)" }}>
       <Container className="py-14 sm:py-20">
         <SectionHeading
-          index="06"
+          index="04"
           eyebrow="Education & recognition"
           title="Degree, training and recognition."
           copy="Engineering degree, applied training programmes and hackathon recognition."

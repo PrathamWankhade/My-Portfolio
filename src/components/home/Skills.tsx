@@ -7,7 +7,7 @@ export function Skills() {
     <section aria-labelledby="skills-heading" className="border-t" style={{ borderColor: "var(--line)" }}>
       <Container className="py-14 sm:py-20">
         <SectionHeading
-          index="05"
+          index="06"
           eyebrow="Skills"
           title="Grouped capabilities, honestly scoped."
           copy="Only source-supported technologies. No percentage bars or invented proficiency scores."

@@ -9,7 +9,7 @@ export function About() {
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <SectionHeading
-              index="03"
+              index="05"
               eyebrow="About"
               title={profile.aboutHeading}
             />

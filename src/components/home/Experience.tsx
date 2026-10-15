@@ -8,7 +8,7 @@ export function Experience() {
     <section id="experience" aria-labelledby="exp-heading" className="border-t scroll-mt-20" style={{ borderColor: "var(--line)" }}>
       <Container className="py-14 sm:py-20">
         <SectionHeading
-          index="04"
+          index="03"
           eyebrow="Experience"
           title="Internships and team leadership."
           copy="Two engineering internships plus academic team leadership."

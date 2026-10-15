@@ -54,6 +54,33 @@ export function ProjectCaseStudy({ slug }: { slug: string }) {
         {project.summary}
       </p>
 
+      <dl
+        aria-label="At a glance"
+        className="mt-6 flex flex-wrap gap-x-10 gap-y-3 border-y py-4"
+        style={{ borderColor: "var(--line)" }}
+      >
+        <div>
+          <dt className="mono-label" style={{ color: "var(--muted)" }}>
+            Status
+          </dt>
+          <dd className="mt-1 text-[0.95rem] font-semibold">{project.status}</dd>
+        </div>
+        <div>
+          <dt className="mono-label" style={{ color: "var(--muted)" }}>
+            Area
+          </dt>
+          <dd className="mt-1 text-[0.95rem] font-semibold">{project.category}</dd>
+        </div>
+        <div>
+          <dt className="mono-label" style={{ color: "var(--muted)" }}>
+            Stack
+          </dt>
+          <dd className="mt-1 text-[0.95rem] font-semibold">
+            {project.stack.length} core technologies
+          </dd>
+        </div>
+      </dl>
+
       <div className="mt-6 flex flex-wrap gap-3">
         <Link
           href={project.repo}
