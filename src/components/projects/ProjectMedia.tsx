@@ -7,11 +7,11 @@ import { ProjectVisual } from "./ProjectVisual";
  * (`project.image`), it leads; the labelled SVG diagram remains the fallback
  * and later becomes the secondary architecture visual.
  */
-export function ProjectMedia({ project }: { project: Project }) {
+export function ProjectMedia({ project, large = false }: { project: Project; large?: boolean }) {
   if (project.image) {
     return (
       <figure
-        className="overflow-hidden rounded-[10px] border"
+        className={`overflow-hidden border ${large ? "rounded-2xl" : "rounded-[10px]"}`}
         style={{ borderColor: "var(--line)", background: "var(--surface)" }}
       >
         <Image

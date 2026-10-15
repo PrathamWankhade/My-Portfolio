@@ -4,70 +4,41 @@ import type { Project } from "@/data/projects";
 import { GithubIcon } from "@/components/ui/BrandIcons";
 import { ProjectMedia } from "./ProjectMedia";
 
-function Meta({ project }: { project: Project }) {
+function Actions({ project }: { project: Project }) {
   return (
-    <div>
-      <ul className="flex flex-wrap gap-2" aria-label="Key technologies">
-        {project.cardStack.map((t) => (
-          <li
-            key={t}
-            className="rounded-full border px-3 py-1 font-mono text-[11px] tracking-wide"
-            style={{ borderColor: "var(--line)", color: "var(--muted)" }}
-          >
-            {t}
-          </li>
-        ))}
-      </ul>
-      <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.14em]" style={{ color: "var(--muted)" }}>
-        {project.status}
-      </p>
-      <div className="mt-5 flex flex-wrap gap-3">
-        <Link
-          href={`/work/${project.slug}`}
-          className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full px-5 text-sm font-semibold text-[#111315]"
-          style={{ background: "var(--accent)" }}
-        >
-          Case study <ArrowRight size={15} aria-hidden="true" />
-        </Link>
-        <Link
-          href={project.repo}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full border px-5 text-sm font-semibold"
-          style={{ borderColor: "var(--line-strong)", color: "var(--ink)" }}
-        >
-          <GithubIcon size={15} /> Repository <ArrowUpRight size={14} aria-hidden="true" />
-        </Link>
-      </div>
+    <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+      <Link
+        href={`/work/${project.slug}`}
+        className="link-underline inline-flex min-h-[44px] items-center gap-1.5 text-[0.95rem] font-bold"
+        style={{ color: "var(--ink)" }}
+      >
+        Read case study <ArrowRight size={16} aria-hidden="true" style={{ color: "var(--accent)" }} />
+      </Link>
+      <Link
+        href={project.repo}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="link-underline inline-flex min-h-[44px] items-center gap-1.5 text-[0.95rem] font-semibold"
+        style={{ color: "var(--muted)" }}
+      >
+        <GithubIcon size={15} /> Repository <ArrowUpRight size={14} aria-hidden="true" />
+      </Link>
     </div>
   );
 }
 
-function Heading({ project }: { project: Project }) {
+function TechLine({ project }: { project: Project }) {
   return (
-    <div>
-      <p className="mono-label" style={{ color: "var(--muted)" }}>
-        <span style={{ color: "var(--accent)" }}>{project.index}</span> — {project.category}
-      </p>
-      <h3 id={`project-${project.slug}`} className="display mt-3 text-2xl font-bold sm:text-[1.7rem]">
-        {project.title}
-      </h3>
-      <p className="mt-3 leading-relaxed" style={{ color: "var(--ink-dim)" }}>
-        {project.summary}
-      </p>
-      <p
-        className="mt-4 border-l-2 pl-4 text-[0.95rem] font-medium leading-relaxed"
-        style={{ borderColor: "var(--accent)", color: "var(--ink)" }}
-      >
-        {project.signal}
-      </p>
-    </div>
+    <p className="mt-5 text-[0.9rem]" style={{ color: "var(--muted)" }}>
+      {project.cardStack.join("  ·  ")}
+    </p>
   );
 }
 
 /**
- * Two rhythms, one system. The lead project gets a full-width feature layout;
- * the rest use alternating splits — variation is intentional, not decorative.
+ * Editorial showcase: one full-width feature, then open split rows divided
+ * by hairlines — not four identical boxes. Metadata stays quiet so the
+ * title, visual and signal carry the hierarchy.
  */
 export function ProjectCard({
   project,
@@ -80,17 +51,28 @@ export function ProjectCard({
 }) {
   if (variant === "feature") {
     return (
-      <article
-        className="card-hover overflow-hidden rounded-2xl border"
-        style={{ borderColor: "var(--line)", background: "var(--surface)" }}
-        aria-labelledby={`project-${project.slug}`}
-      >
-        <div className="p-6 pb-0 sm:p-8 sm:pb-0">
-          <ProjectMedia project={project} />
-        </div>
-        <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12">
-          <Heading project={project} />
-          <Meta project={project} />
+      <article aria-labelledby={`project-${project.slug}`}>
+        <ProjectMedia project={project} large />
+        <p className="mono-label mt-6" style={{ color: "var(--muted)" }}>
+          Featured · {project.index} — {project.category} · {project.status}
+        </p>
+        <h3
+          id={`project-${project.slug}`}
+          className="display mt-3 max-w-[20ch] text-balance text-3xl font-extrabold leading-[1.05] sm:text-[2.75rem]"
+        >
+          {project.title}
+        </h3>
+        <div className="mt-4 grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
+          <div>
+            <p className="text-[1.05rem] leading-relaxed" style={{ color: "var(--ink-dim)" }}>
+              {project.summary}
+            </p>
+            <p className="mt-3 text-[1.05rem] font-medium leading-relaxed">{project.signal}</p>
+          </div>
+          <div className="lg:justify-self-end">
+            <TechLine project={project} />
+            <Actions project={project} />
+          </div>
         </div>
       </article>
     );
@@ -98,15 +80,23 @@ export function ProjectCard({
 
   return (
     <article
-      className="card-hover grid gap-6 overflow-hidden rounded-2xl border p-6 sm:p-8 lg:grid-cols-2 lg:gap-10"
-      style={{ borderColor: "var(--line)", background: "var(--surface)" }}
       aria-labelledby={`project-${project.slug}`}
+      className="grid gap-8 border-t pt-10 lg:grid-cols-2 lg:gap-12"
+      style={{ borderColor: "var(--line)" }}
     >
       <div className={flip ? "lg:order-2" : ""}>
-        <Heading project={project} />
-        <div className="mt-2">
-          <Meta project={project} />
-        </div>
+        <p className="mono-label" style={{ color: "var(--muted)" }}>
+          {project.index} — {project.category} · {project.status}
+        </p>
+        <h3 id={`project-${project.slug}`} className="display mt-3 text-3xl font-extrabold leading-[1.05] sm:text-4xl">
+          {project.title}
+        </h3>
+        <p className="mt-4 leading-relaxed" style={{ color: "var(--ink-dim)" }}>
+          {project.summary}
+        </p>
+        <p className="mt-3 font-medium leading-relaxed">{project.signal}</p>
+        <TechLine project={project} />
+        <Actions project={project} />
       </div>
       <div className={flip ? "lg:order-1" : ""}>
         <ProjectMedia project={project} />

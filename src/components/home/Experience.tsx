@@ -1,4 +1,3 @@
-import { Briefcase } from "lucide-react";
 import { experience, leadership } from "@/data/experience";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -7,66 +6,55 @@ export function Experience() {
   return (
     <section id="experience" aria-labelledby="exp-heading" className="border-t scroll-mt-20" style={{ borderColor: "var(--line)" }}>
       <Container className="py-14 sm:py-20">
-        <SectionHeading
-          index="03"
-          eyebrow="Experience"
-          title="Internships and team leadership."
-          copy="Two engineering internships plus academic team leadership."
-        />
-        <span id="exp-heading" className="sr-only">
-          Experience
-        </span>
-        <div className="mt-10 grid gap-4 lg:grid-cols-2">
-          {experience.map((e) => (
-            <article
-              key={e.employer}
-              className="card-hover rounded-xl border p-6 sm:p-7"
-              style={{ borderColor: "var(--line)", background: "var(--surface)" }}
-            >
-              <div className="flex items-center gap-3">
+        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+          <div className="lg:sticky lg:top-24 lg:self-start">
+            <SectionHeading
+              eyebrow="Experience"
+              title="Internships and team leadership."
+              copy="Two engineering internships plus academic team leadership."
+            />
+            <span id="exp-heading" className="sr-only">
+              Experience
+            </span>
+          </div>
+          <ol className="relative space-y-10 border-l pl-8 sm:pl-10" style={{ borderColor: "var(--line-strong)" }}>
+            {experience.map((e) => (
+              <li key={e.employer} className="relative">
                 <span
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border"
-                  style={{ borderColor: "var(--line-strong)", color: "var(--accent)" }}
-                >
-                  <Briefcase size={17} aria-hidden="true" />
-                </span>
-                <div>
-                  <h3 className="display text-lg font-bold">{e.employer}</h3>
-                  <p className="text-sm" style={{ color: "var(--muted)" }}>
-                    {e.role} · {e.dates}
-                  </p>
-                </div>
-              </div>
-              <ul className="mt-4 space-y-2.5 text-[0.95rem] leading-relaxed" style={{ color: "var(--ink-dim)" }}>
-                {e.points.map((p) => (
-                  <li key={p.slice(0, 28)} className="flex gap-3">
-                    <span aria-hidden="true" style={{ color: "var(--accent)" }}>
-                      —
-                    </span>
-                    <span>{p}</span>
-                  </li>
-                ))}
-              </ul>
-              <ul className="mt-4 flex flex-wrap gap-2" aria-label={`${e.employer} tags`}>
-                {e.tags.map((t) => (
-                  <li
-                    key={t}
-                    className="rounded-full border px-3 py-1 font-mono text-[11px]"
-                    style={{ borderColor: "var(--line)", color: "var(--muted)" }}
-                  >
-                    {t}
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
+                  aria-hidden="true"
+                  className="absolute top-1.5 -left-8 block h-2.5 w-2.5 rounded-full sm:-left-10 sm:translate-x-[-3px]"
+                  style={{ background: "var(--accent)", marginLeft: "-5px" }}
+                />
+                <p className="font-mono text-xs tracking-wide" style={{ color: "var(--muted)" }}>
+                  {e.dates}
+                </p>
+                <h3 className="display mt-2 text-2xl font-extrabold">{e.employer}</h3>
+                <p className="mt-0.5 font-medium" style={{ color: "var(--ink-dim)" }}>
+                  {e.role}
+                </p>
+                <ul className="mt-3 max-w-xl space-y-2 leading-relaxed" style={{ color: "var(--ink-dim)" }}>
+                  {e.points.map((p) => (
+                    <li key={p.slice(0, 28)}>{p}</li>
+                  ))}
+                </ul>
+                <p className="mt-3 text-sm" style={{ color: "var(--muted)" }}>
+                  {e.tags.join("  ·  ")}
+                </p>
+              </li>
+            ))}
+            <li className="relative">
+              <span
+                aria-hidden="true"
+                className="absolute top-1.5 -left-8 block h-2.5 w-2.5 rounded-full border-2 sm:-left-10 sm:translate-x-[-3px]"
+                style={{ borderColor: "var(--accent)", marginLeft: "-5px" }}
+              />
+              <h3 className="display text-xl font-bold">{leadership.title}</h3>
+              <p className="mt-2 max-w-xl leading-relaxed" style={{ color: "var(--ink-dim)" }}>
+                {leadership.note}
+              </p>
+            </li>
+          </ol>
         </div>
-        <p
-          className="mt-6 rounded-xl border p-5 text-[0.95rem] leading-relaxed"
-          style={{ borderColor: "var(--line)", background: "var(--surface)", color: "var(--ink-dim)" }}
-        >
-          <strong style={{ color: "var(--ink)" }}>{leadership.title}.</strong> {leadership.note}
-        </p>
       </Container>
     </section>
   );

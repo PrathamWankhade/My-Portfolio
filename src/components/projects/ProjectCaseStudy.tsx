@@ -9,9 +9,7 @@ import { notFound } from "next/navigation";
 function Block({ title, items }: { title: string; items: string[] }) {
   return (
     <section aria-label={title} className="border-t pt-6" style={{ borderColor: "var(--line)" }}>
-      <h2 className="mono-label" style={{ color: "var(--accent)" }}>
-        {title}
-      </h2>
+      <h2 className="display text-xl font-bold">{title}</h2>
       <ul className="mt-3 space-y-2.5 leading-relaxed" style={{ color: "var(--ink-dim)" }}>
         {items.map((item) => (
           <li key={item} className="flex gap-3">
@@ -109,9 +107,7 @@ export function ProjectCaseStudy({ slug }: { slug: string }) {
         <div>
           <ProjectMedia project={project} />
           <section aria-label="Overview" className="mt-8">
-            <h2 className="mono-label" style={{ color: "var(--accent)" }}>
-              Overview & motivation
-            </h2>
+            <h2 className="display text-xl font-bold">Overview & motivation</h2>
             <p className="mt-3 leading-relaxed" style={{ color: "var(--ink-dim)" }}>
               {project.motivation}
             </p>
@@ -129,9 +125,7 @@ export function ProjectCaseStudy({ slug }: { slug: string }) {
             className="rounded-xl border p-6"
             style={{ borderColor: "var(--line)", background: "var(--surface)" }}
           >
-            <h2 className="mono-label" style={{ color: "var(--accent)" }}>
-              Validation
-            </h2>
+            <h2 className="display text-xl font-bold">Validation</h2>
             <p className="mt-3 text-[0.95rem] leading-relaxed" style={{ color: "var(--ink-dim)" }}>
               {project.validation}
             </p>
@@ -143,21 +137,21 @@ export function ProjectCaseStudy({ slug }: { slug: string }) {
 
       <nav
         aria-label="Next project"
-        className="mt-16 flex items-center justify-between rounded-2xl border p-6 sm:p-8"
-        style={{ borderColor: "var(--line)", background: "var(--surface)" }}
+        className="mt-16 flex flex-wrap items-end justify-between gap-4 border-t pt-8"
+        style={{ borderColor: "var(--line)" }}
       >
         <div>
           <p className="mono-label" style={{ color: "var(--muted)" }}>
             Next — {next.index} / {next.category}
           </p>
-          <p className="display mt-1 text-2xl font-bold">{next.title}</p>
+          <p className="display mt-2 text-3xl font-extrabold sm:text-4xl">{next.title}</p>
         </div>
         <Link
           href={`/work/${next.slug}`}
-          className="inline-flex min-h-[44px] items-center gap-1.5 rounded-full px-5 text-sm font-semibold text-[#111315]"
+          className="inline-flex min-h-[48px] items-center gap-1.5 rounded-full px-6 text-[0.95rem] font-semibold text-[#111315]"
           style={{ background: "var(--accent)" }}
         >
-          Open <ArrowRight size={15} aria-hidden="true" />
+          Open case study <ArrowRight size={15} aria-hidden="true" />
         </Link>
       </nav>
     </Container>

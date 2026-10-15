@@ -1,100 +1,54 @@
 import Link from "next/link";
 import { ArrowUpRight, FileDown } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/ui/BrandIcons";
 import { profile } from "@/data/profile";
 import { siteConfig } from "@/lib/metadata";
 import { Container } from "@/components/ui/Container";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { GithubIcon, LinkedinIcon } from "@/components/ui/BrandIcons";
 import { CopyEmailButton } from "@/components/ui/CopyEmailButton";
 
 export function Contact() {
   return (
     <section id="contact" aria-labelledby="contact-heading" className="border-t scroll-mt-20" style={{ borderColor: "var(--line)" }}>
-      <Container className="py-14 sm:py-20">
-        <div className="grid gap-10 lg:grid-cols-[1fr_1fr]">
-          <div>
-            <SectionHeading index="07" eyebrow="Contact" title={profile.contactHeading} />
-            <span id="contact-heading" className="sr-only">
-              Contact
-            </span>
-            <p className="mt-4 max-w-md leading-relaxed" style={{ color: "var(--ink-dim)" }}>
-              {profile.contactCopy}
-            </p>
-            <div className="mt-7">
-              <CopyEmailButton />
-            </div>
-          </div>
-          <div
-            className="h-fit rounded-2xl border p-6 sm:p-8"
-            style={{ borderColor: "var(--line)", background: "var(--surface)" }}
-          >
-            <p className="mono-label" style={{ color: "var(--muted)" }}>
-              Elsewhere
-            </p>
-            <ul className="mt-4 space-y-1">
-              {[
-                { href: siteConfig.github, label: "GitHub", sub: "@PrathamWankhade" },
-                { href: siteConfig.linkedin, label: "LinkedIn", sub: "pratham-wankhade" },
-              ].map((row) => (
-                <li key={row.label}>
-                  <Link
-                    href={row.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center justify-between rounded-xl px-4 py-3.5 transition-colors"
-                  >
-                    <span className="flex items-center gap-3">
-                      <span style={{ color: "var(--accent)" }}>
-                        {row.label === "GitHub" ? <GithubIcon size={18} /> : <LinkedinIcon size={18} />}
-                      </span>
-                      <span>
-                        <span className="block font-semibold">{row.label}</span>
-                        <span className="block text-sm" style={{ color: "var(--muted)" }}>
-                          {row.sub}
-                        </span>
-                      </span>
-                    </span>
-                    <ArrowUpRight
-                      size={17}
-                      aria-hidden="true"
-                      className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                      style={{ color: "var(--muted)" }}
-                    />
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link
-                  href={siteConfig.resumePath}
-                  download
-                  className="group flex items-center justify-between rounded-xl px-4 py-3.5 transition-colors"
-                >
-                  <span className="flex items-center gap-3">
-                    <span style={{ color: "var(--accent)" }}>
-                      <FileDown size={18} aria-hidden="true" />
-                    </span>
-                    <span>
-                      <span className="block font-semibold">Résumé (PDF)</span>
-                      <span className="block text-sm" style={{ color: "var(--muted)" }}>
-                        View / download
-                      </span>
-                    </span>
-                  </span>
-                  <ArrowUpRight
-                    size={17}
-                    aria-hidden="true"
-                    className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                    style={{ color: "var(--muted)" }}
-                  />
-                </Link>
-              </li>
-            </ul>
-            <p className="mt-4 border-t pt-4 text-xs leading-relaxed" style={{ borderColor: "var(--line)", color: "var(--muted)" }}>
-              No contact form is included by design — email is the direct channel, so no message goes into
-              an unmonitored queue. Based in {siteConfig.location}.
-            </p>
-          </div>
+      <Container className="py-16 sm:py-24">
+        <p
+          className="flex items-center gap-3 text-[0.8rem] font-semibold uppercase tracking-[0.18em]"
+          style={{ color: "var(--accent)" }}
+        >
+          <span className="inline-block h-px w-8" style={{ background: "var(--accent)" }} aria-hidden="true" />
+          Contact
+        </p>
+        <h2
+          id="contact-heading"
+          className="display mt-4 max-w-[18ch] text-balance text-4xl font-extrabold leading-[1.04] sm:text-6xl"
+        >
+          {profile.contactHeading}
+        </h2>
+        <p className="mt-5 max-w-xl text-[1.05rem] leading-relaxed" style={{ color: "var(--ink-dim)" }}>
+          {profile.contactCopy}
+        </p>
+        <div className="mt-8">
+          <CopyEmailButton />
         </div>
+        <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t pt-6" style={{ borderColor: "var(--line)" }}>
+          {[
+            { href: siteConfig.github, label: "GitHub", icon: <GithubIcon size={16} /> },
+            { href: siteConfig.linkedin, label: "LinkedIn", icon: <LinkedinIcon size={16} /> },
+            { href: siteConfig.resumePath, label: "Résumé (PDF)", icon: <FileDown size={16} aria-hidden="true" />, download: true },
+          ].map((row) => (
+            <li key={row.label}>
+              <Link
+                href={row.href}
+                {...(row.download ? { download: true } : { target: "_blank", rel: "noopener noreferrer" })}
+                className="link-underline inline-flex min-h-[44px] items-center gap-2 text-[0.95rem] font-semibold"
+                style={{ color: "var(--ink-dim)" }}
+              >
+                <span style={{ color: "var(--accent)" }}>{row.icon}</span>
+                {row.label}
+                {!row.download && <ArrowUpRight size={14} aria-hidden="true" style={{ color: "var(--muted)" }} />}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </Container>
     </section>
   );

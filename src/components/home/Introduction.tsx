@@ -17,38 +17,28 @@ const strips = [
 ];
 
 /**
- * Compact expertise strip: three disciplines in one divider row. It shortens
- * the path to selected work instead of delaying it behind large cards.
+ * Open editorial row: aligned text and thin dividers, no boxes.
+ * Bridges the hero and selected work without competing with them.
  */
 export function Introduction() {
   return (
     <section aria-labelledby="intro-heading" className="border-t" style={{ borderColor: "var(--line)" }}>
-      <Container className="py-10 sm:py-14">
-        <div className="grid gap-6 lg:grid-cols-[1fr_1fr] lg:items-end">
-          <SectionHeading
-            index="01"
-            eyebrow="Focus"
-            title="Three disciplines, one practice."
-          />
-          <p className="max-w-xl leading-relaxed lg:justify-self-end" style={{ color: "var(--ink-dim)" }}>
-            Model-driven intelligence, evidence-first security, and systems that
-            work offline — carried from architecture to working prototype.
-          </p>
+      <Container className="py-12 sm:py-16">
+        <div className="max-w-2xl">
+          <SectionHeading eyebrow="Focus" title="Three disciplines, one practice." />
+          <span id="intro-heading" className="sr-only">
+            Areas of focus
+          </span>
         </div>
-        <span id="intro-heading" className="sr-only">
-          Areas of focus
-        </span>
-        <dl
-          className="mt-8 grid gap-px overflow-hidden rounded-xl border sm:grid-cols-3"
-          style={{ borderColor: "var(--line)", background: "var(--line)" }}
-        >
+        <dl className="mt-8 grid gap-8 md:grid-cols-3 md:gap-6">
           {strips.map((s, i) => (
-            <div key={s.title} className="p-5 sm:p-6" style={{ background: "var(--surface)" }}>
-              <dt className="mono-label" style={{ color: "var(--muted)" }}>
-                {String(i + 1).padStart(2, "0")}
-              </dt>
-              <dd className="display mt-2 text-[1.05rem] font-bold">{s.title}</dd>
-              <dd className="mt-1.5 text-[0.92rem] leading-relaxed" style={{ color: "var(--ink-dim)" }}>
+            <div
+              key={s.title}
+              className={i > 0 ? "md:border-l md:pl-6" : ""}
+              style={{ borderColor: "var(--line)" }}
+            >
+              <dt className="display text-xl font-bold">{s.title}</dt>
+              <dd className="mt-2 leading-relaxed" style={{ color: "var(--ink-dim)" }}>
                 {s.copy}
               </dd>
             </div>

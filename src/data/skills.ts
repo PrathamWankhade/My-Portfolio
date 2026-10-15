@@ -1,7 +1,6 @@
 export interface SkillGroup {
   label: string;
   items: string[];
-  note?: string;
 }
 
 export const skillGroups: SkillGroup[] = [
@@ -11,22 +10,43 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     label: "Applied AI",
-    items: ["Machine learning", "NLP", "Computer vision", "Data analysis", "Model evaluation"],
+    items: [
+      "Machine learning",
+      "NLP",
+      "Computer vision",
+      "TensorFlow",
+      "PyTorch",
+      "scikit-learn",
+      "OpenCV",
+      "Data analysis",
+      "Model evaluation",
+    ],
   },
   {
-    label: "Frameworks & tools",
-    items: ["TensorFlow", "PyTorch", "OpenCV", "scikit-learn", "Git", "Docker", "Linux"],
+    label: "Web and tools",
+    items: [
+      "FastAPI",
+      "Next.js",
+      "React",
+      "REST APIs",
+      "Firebase",
+      "Databases",
+      "Git",
+      "Docker",
+      "Linux",
+    ],
   },
   {
-    label: "Backend / Web",
-    items: ["FastAPI", "Next.js", "React", "REST APIs", "Firebase", "Databases"],
-  },
-  {
-    label: "Security",
-    items: ["Phishing analysis", "Intrusion detection", "Security fundamentals", "Applied crypto building blocks"],
-  },
-  {
-    label: "Systems",
-    items: ["Bluetooth LE", "Local persistence", "Message routing", "Application architecture"],
+    label: "Security and systems",
+    items: [
+      "Phishing analysis",
+      "Intrusion detection",
+      "Security fundamentals",
+      "Applied crypto building blocks",
+      "Bluetooth LE",
+      "Local persistence",
+      "Message routing",
+      "Application architecture",
+    ],
   },
 ];
